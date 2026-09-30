@@ -231,3 +231,23 @@ ALLOW_AUTOMATIC_DEPLOYMENT = get_bool_setting(
     "ALLOW_AUTOMATIC_DEPLOYMENT",
     False,
 )
+
+DEMO_MODE = get_bool_setting(
+    "DEMO_MODE",
+    False,
+)
+
+FAULT_INJECTION_ENABLED = get_bool_setting(
+    "FAULT_INJECTION_ENABLED",
+    False,
+)
+
+FAULT_API_TOKEN = os.getenv(
+    "FAULT_API_TOKEN",
+    "",
+)
+
+DATADOG_EVENT_INTAKE_URL = os.getenv(
+    "DATADOG_EVENT_INTAKE_URL",
+    "https://event-management-intake.datadoghq.com",
+).rstrip("/")

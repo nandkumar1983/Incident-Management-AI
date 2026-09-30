@@ -23,6 +23,9 @@ from app.services.incident_service import (
     IncidentService,
 )
 
+from app.api.demo_routes import (
+    router as demo_router,
+)
 
 app = FastAPI(
     title=APP_NAME,
@@ -35,8 +38,13 @@ app = FastAPI(
 )
 
 # Routers
+from app.api.demo_routes import (
+    router as demo_router,
+)
+app.include_router(demo_router)
 app.include_router(datadog_router)
 app.include_router(investigation_router)
+app.include_router(demo_router)
 
 
 def build_incident_response(

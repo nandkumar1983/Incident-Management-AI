@@ -63,3 +63,29 @@ class DatadogAlertResponse(BaseModel):
     service_now_number: str | None = None
     investigation_id: str | None = None
     message: str
+
+class FaultInjectionRequest(BaseModel):
+    customer_id: str = Field(
+        min_length=3,
+        max_length=50,
+    )
+
+    amount: float = Field(
+        gt=0,
+    )
+
+    inject_fault: bool = True
+
+
+class FaultInjectionResponse(BaseModel):
+    scenario: str
+    fault_triggered: bool
+    error_type: str | None = None
+    error_message: str | None = None
+    datadog_event_status: str
+    datadog_event_id: str | None = None
+    internal_incident_id: str | None = None
+    service_now_number: str | None = None
+    investigation_id: str | None = None
+    investigation_status: str | None = None
+    human_approval_required: bool
